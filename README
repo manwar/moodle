@@ -1,0 +1,51 @@
+NAME
+
+    Moodle
+
+ABSTRACT
+
+    Nam suscipit iaculis magna vitae faucibus.
+
+SYNOPSIS
+
+      use Moodle;
+    
+      my $self = Moodle->new;
+
+DESCRIPTION
+
+    Moodle use Doodle with Mojo database drivers to easily install and
+    evolve database schema migrations.
+
+METHODS
+
+    This package implements the following methods.
+
+ content
+
+      content() : Str
+
+    The content method generates DB migration statements using the
+    Doodle::Migrator and return a string containing "UP" and "DOWN"
+    versioned migration strings suitable for use with the migration feature
+    of Mojo database drivers.
+
+    content example
+
+        my $content = $self->content;
+
+ migrate
+
+      migrate(Maybe[Str] $target) : Object
+
+    The migrate method generates DB migration statements using the
+    Doodle::Migrator and installs them using one of the Mojo database
+    drivers, i.e. Mojo::Pg, Mojo::mysql or Mojo::SQLite. The method returns
+    a migration object relative to to the DB driver used.
+
+    migrate example
+
+        my $migrate = $self->migrate;
+      
+        my $latest = $self->migrate('latest');
+
