@@ -4,18 +4,27 @@ NAME
 
 ABSTRACT
 
-    Nam suscipit iaculis magna vitae faucibus.
+    Migrations for Mojo DB Drivers
 
 SYNOPSIS
 
       use Moodle;
+      use Mojo::Pg;
+      use App::Migrator;
     
-      my $self = Moodle->new;
+      my $migrator = App::Migrator->new;
+      my $driver = Mojo::Pg->new('postgresql://postgres@/test');
+    
+      my $self = Moodle->new(migrator => $migrator, driver => $driver);
+    
+      my $migration = $self->migrate('latest');
 
 DESCRIPTION
 
-    Moodle use Doodle with Mojo database drivers to easily install and
-    evolve database schema migrations.
+    Moodle uses Doodle with Mojo database drivers to easily install and
+    evolve database schema migrations. See Doodle::Migrator for help
+    setting up Doodle migrations, and Mojo::Pg, Mojo::mysql or Mojo::SQLite
+    for help configuring the DB driver.
 
 METHODS
 
