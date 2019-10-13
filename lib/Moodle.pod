@@ -3,7 +3,7 @@
 
 =head1 NAME
 
-Moodle
+Moodle - Mojo DB Driver Migrations
 
 =cut
 
